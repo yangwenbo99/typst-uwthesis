@@ -1,5 +1,5 @@
-#import "format.typ": project, committee, GLOSSARIES
-#import "glossaries.typ"
+#import "format.typ": project, appendix, gls
+#import "glossaries.typ": GLOSSARIES
 
 #show: project.with(
   title: "University of Waterloo E-Thesis Template for typst",
@@ -76,30 +76,30 @@
   declaration: "", 
   acknowledgements: "Hopefully, I will be able to thank everyone who made this possible.", 
   dedication: "This is dedicated to the one I love.  You may remove this section by setting this to empty", 
-
+  glossaries: GLOSSARIES
 
 )
 
 // #committee
 //
-#GLOSSARIES
-
 = Introduction
 #label("introduction")
+
 In the beginning, there was $pi$:
 
-$ e^(pi i) plus 1 eq 0 $ A computer could compute $pi$ all day long. In
+$ e^(pi i) plus 1 eq 0 $ <eqn_pi> A computer could compute $pi$ all day long. In
 fact, subsets of digits of $pi$’s decimal approximation would make a
-good source for psuedo-random vectors, rvec .
+good source for psuedo-random vectors, #gls("rvec").
 
 == State of the Art
 #label("state-of-the-art")
-See equation #link("#eqn_pi")[\[eqn\_pi\]] on page .#super[1]
+See equation @eqn_pi on page.#footnote[A famous equation.]
 
 == Some Meaningless Stuff
 #label("some-meaningless-stuff")
-The credo of the aaaaz was, for several years, several paragraphs of
-gibberish, until the dingledorf responsible for the aaaaz Web site
+
+The credo of the #gls("aaaaz") was, for several years, several paragraphs of
+gibberish, until the dingledorf responsible for the #gls("aaaaz") Web site
 realized his mistake:
 
 \"Velit dolor illum facilisis zzril ipsum, augue odio, accumsan ea augue
@@ -161,6 +161,7 @@ qui blandit hendrerit. Ea dolor nonummy ullamcorper nulla lorem tation
 laoreet in ea, ullamcorper vel consequat zzril delenit quis dignissim,
 vulputate tincidunt ut.\"
 
+#pagebreak(weak: true)
 = Observations
 #label("observations")
 This would be a good place for some figures and tables.
@@ -195,24 +196,36 @@ Some notes on figures and photographs…
   down drawings may cause any text annotations to become too small.
 
 For more information on LaTeX  see these
-https://uwaterloo.ca/information-systems-technology/services/electronic-thesis-preparation-and-submission-support/ethesis-guide/creating-pdf-version-your-thesis/creating-pdf-files-using-latex/latex-ethesis-and-large-documentscourse
+#link("https://uwaterloo.ca/information-systems-technology/services/electronic-thesis-preparation-and-submission-support/ethesis-guide/creating-pdf-version-your-thesis/creating-pdf-files-using-latex/latex-ethesis-and-large-documentscourse")
 notes. #super[2]
 
 The classic book by Leslie Lamport #cite("lamport.book"), author of
 LaTeX, is worth a look too, and the many available add-on packages are
 described by Goossens #emph[et al] #cite("goossens.book").
 
-= APPENDICES
+#pagebreak(weak: true)
+#bibliography("uw-ethesis.bib")
+
+// #set heading(numbering: "A.1.1.1")
+// #counter(heading).update(0)
+#show: appendix
+
+#pagebreak(weak: true)
+#heading("APPENDICES", numbering: none)
 #label("appendices")
+
+
+#pagebreak(weak: true)
 = Matlab Code for Making a PDF Plot
 #label("AppendixA")
+
 == Using the Graphical User Interface
 #label("using-the-graphical-user-interface")
 Properties of Matab plots can be adjusted from the plot window via a
 graphical interface. Under the Desktop menu in the Figure window, select
 the Property Editor. You may also want to check the Plot Browser and
 Figure Palette for more tools. To adjust properties of the axes, look
-under the Edit menu and select Axes Properties.
+under the Edit menu and select Axes Properties #cite("goossens.book").
 
 To set the figure size and to save as PDF or other file formats, click
 the Export Setup button in the figure Property Editor.
@@ -238,4 +251,3 @@ cd n:\thesis\plots % Select where to save
 print -dpdf plot.pdf % Save as PDF
 ```
 
-#bibliography("uw-ethesis.bib")
