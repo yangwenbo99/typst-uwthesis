@@ -54,7 +54,7 @@
 #let small_title(content) = {
   align(center)[
     #heading(
-      outlined: false,
+      outlined: true,
       numbering: none,
       text(0.85em,content),
     )
@@ -62,9 +62,28 @@
   ]
 }
 
+#let GLOSSARIES = (:)
+
+#let register_glossary(name: "str", glossaries: (:)) = {
+  GLOSSARIES.insert(name, glossaries)
+}
+
+#let print_glossary(name: "") = {
+  let to_print = ()
+  for (abbr, full) in GLOSSARIES.at(name).values() {
+    to_print.push(abbr)
+    to_print.push(full)
+  }
+  grid(
+    columns: 2,
+    gutter: 3mm,
+    ..to_print
+  )
+}
 
 #let project(
   title: "",
+  doc_type: "thesis", 
   abstract: [],
   author: "",
   email: "",
@@ -88,7 +107,10 @@
      )
     ), 
   ), 
-  declearation: "none", 
+  declaration: "none", 
+  statement: "",
+  acknowledgements: "", 
+  dedication: "", 
   body
 ) = {
   set page(
@@ -125,7 +147,7 @@
 
     #v(2cm)
 
-    A thesis \
+    A #doc_type \
     presented to #affiliation \
     in fulfillment of the \
     thesis requirement for the degree of \
@@ -151,6 +173,7 @@
   }
   
   pagebreak()
+  set page(numbering: "i", number-align: center)
 
   // committee
   let commitee_body = ()
@@ -185,21 +208,77 @@
   )
 
   pagebreak()
-  small_title([Author’s Declaration])
 
-  pagebreak()
+  if declaration != "none" {
+    small_title([Author’s Declaration])
+    if declaration == "sole" [
+      I hereby declare that I am the sole author of this thesis. This is a true copy of the thesis, including any required final revisions, as accepted by my examiners.
+
+      I understand that my thesis may be made electronically available to the public.
+    ] else if declaration == "compiled" [
+      This thesis consists of material all of which I authored or co-authored: see Statement of Contributions included in the thesis. This is a true copy of the thesis, including any required final revisions, as accepted by my examiners.
+
+      I understand that my thesis may be made electronically available to the public.
+    ] else [
+      The author makes no declaration yet. 
+    ]
+    pagebreak()
+  }
+
+  if statement != "" {
+    small_title([Statement of Contributions])
+    statement
+    pagebreak()
+  }
 
   // Abstract page.
-  set page(numbering: "i", number-align: center)
   v(1fr)
   small_title([Abstract])
   abstract
   v(1.618fr)
-  counter(page).update(1)
+  pagebreak()
+
+  small_title([Acknowledgements])
+  acknowledgements
+
+  pagebreak()
+
+  if dedication != "" {
+    small_title([Dedication])
+    dedication
+  }
+
+
   pagebreak()
 
   // Table of contents.
-  outline(depth: 3, indent: true)
+  outline(
+    title: "Table of Contents", 
+    depth: 3, indent: true
+  )
+  pagebreak()
+
+  outline(
+    title: "List of Figures", 
+    depth: 3, indent: true,
+    target: figure.where(kind: image)
+  )
+  pagebreak()
+
+  outline(
+    title: "List of Tables", 
+    depth: 3, indent: true,
+    target: figure.where(kind: table)
+  )
+  pagebreak()
+
+
+  heading(
+    outlined: true,
+    numbering: none,
+    text("List of Abbreviations"),
+  )
+  print_glossary("abbreviation")
   pagebreak()
 
 
@@ -219,3 +298,4 @@
     ])
   )
 }
+

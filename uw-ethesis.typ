@@ -1,7 +1,9 @@
-#import "format.typ": project, committee
+#import "format.typ": project, committee, GLOSSARIES
+#import "glossaries.typ"
 
 #show: project.with(
   title: "University of Waterloo E-Thesis Template for typst",
+  doc_type: "theis", 
   author: "Pat Neugraad", 
   affiliation: "the University of Waterloo", 
   major: "Philosophy of Zoology",
@@ -70,140 +72,17 @@
      )
     ), 
   ), 
-  abstract: lorem(59)
+  abstract: lorem(59),
+  declaration: "", 
+  acknowledgements: "Hopefully, I will be able to thank everyone who made this possible.", 
+  dedication: "This is dedicated to the one I love.  You may remove this section by setting this to empty", 
 
 
 )
 
 // #committee
-
-
-#strong[University of Waterloo E-Thesis Template for LaTeX]
-
-by \
-
-Pat Neugraad \
-
-A thesis \
-presented to the University of Waterloo \
-in fulfillment of the \
-thesis requirement for the degree of \
-Doctor of Philosophy \
-in \
-Philosophy of Zoology \
-
-Waterloo, Ontario, Canada, 2022 \
-
-© Pat Neugraad 2022 \
-
-#strong[Examining Committee Membership]
-
-The following served on the Examining Committee for this thesis. The
-decision of the Examining Committee is by majority vote.
-
-Internal-External Member: ̄ External Examiner: Bruce Bruce \
-Professor, Dept. of Philosophy of Zoology, University of Wallamaloo \
-
-Internal-External Member: ̄ Supervisor(s): Ann Elk \
-Professor, Dept. of Zoology, University of Waterloo \
-Andrea Anaconda \
-Professor Emeritus, Dept. of Zoology, University of Waterloo \
-
-Internal-External Member: ̄ Internal Member: Pamela Python \
-Professor, Dept. of Zoology, University of Waterloo \
-
-Internal-External Member: ̄ Internal-External Member: Meta Meta \
-Professor, Dept. of Philosophy, University of Waterloo \
-
-Internal-External Member: ̄ Other Member(s): Leeping Fang \
-Professor, Dept. of Fine Art, University of Waterloo \
-
-#strong[Author’s Declaration]
-
-I hereby declare that I am the sole author of this thesis. This is a
-true copy of the thesis, including any required final revisions, as
-accepted by my examiners.
-
-I understand that my thesis may be made electronically available to the
-public.
-
-#strong[Abstract]
-
-This is the abstract.
-
-Vulputate minim vel consequat praesent at vel iusto et, ex delenit, esse
-euismod luptatum augue ut sit et eu vel augue autem feugiat, quis ad
-dolore. Nulla vel, laoreet lobortis te commodo elit qui aliquam enim ex
-iriure ea ullamcorper nostrud lorem, lorem laoreet eu ex ut vel in zzril
-wisi quis. Nisl in autem praesent dignissim, sit vel aliquam at te, vero
-dolor molestie consequat.
-
-Tation iriure sed wisi feugait odio dolore illum duis in accumsan velit
-illum consequat consequat ipsum molestie duis duis ut ullamcorper. Duis
-exerci odio blandit vero dolore eros odio amet et nisl in nostrud
-consequat iusto eum suscipit autem vero. Iusto dolore exerci, ut erat
-ex, magna in facilisis duis amet feugait augue accumsan zzril delenit
-aliquip dignissim at. Nisl molestie nibh, vulputate feugait nibh
-luptatum ea delenit nostrud dolore minim veniam odio volutpat delenit
-nulla accumsan eum vero ullamcorper eum. Augue velit veniam, dolor,
-exerci ea feugiat nulla molestie, veniam nonummy nulla dolore tincidunt,
-consectetuer dolore nulla ipsum commodo.
-
-At nostrud lorem, lorem laoreet eu ex ut vel in zzril wisi. Suscipit
-consequat in autem praesent dignissim, sit vel aliquam at te, vero dolor
-molestie consequat eros tation facilisi diam dolor. Odio luptatum dolor
-in facilisis et facilisi et adipiscing suscipit eu iusto praesent enim,
-euismod consectetuer feugait duis. Odio veniam et iriure ad qui nonummy
-aliquip at qui augue quis vel diam, nulla. Autem exerci tation iusto,
-hendrerit et, tation esse consequat ut velit te dignissim eu esse eros
-facilisis lobortis, lobortis hendrerit esse dignissim nisl. Nibh nulla
-minim vel consequat praesent at vel iusto et, ex delenit, esse euismod
-luptatum.
-
-Ut eum vero ullamcorper eum ad velit veniam, dolor, exerci ea feugiat
-nulla molestie, veniam nonummy nulla. Elit tincidunt, consectetuer
-dolore nulla ipsum commodo, ut, at qui blandit suscipit accumsan feugiat
-vel praesent. In dolor, ea elit suscipit nisl blandit hendrerit zzril.
-Sit enim, et dolore blandit illum enim duis feugiat velit consequat
-iriure sed wisi feugait odio dolore illum duis. Et accumsan velit illum
-consequat consequat ipsum molestie duis duis ut ullamcorper nulla exerci
-odio blandit vero dolore eros odio amet et.
-
-In augue quis vel diam, nulla dolore exerci tation iusto, hendrerit et,
-tation esse consequat ut velit. Duis dignissim eu esse eros facilisis
-lobortis, lobortis hendrerit esse dignissim nisl illum nulla minim vel
-consequat praesent at vel iusto et, ex delenit, esse euismod. Nulla
-augue ut sit et eu vel augue autem feugiat, quis ad dolore te vel,
-laoreet lobortis te commodo elit qui aliquam enim ex iriure. Ut
-ullamcorper nostrud lorem, lorem laoreet eu ex ut vel in zzril wisi quis
-consequat in autem praesent dignissim, sit vel. Dolore at te, vero dolor
-molestie consequat eros tation facilisi diam. Feugait augue luptatum
-dolor in facilisis et facilisi et adipiscing suscipit eu iusto praesent
-enim, euismod consectetuer feugait duis vulputate veniam et.
-
-Ad eros odio amet et nisl in nostrud consequat iusto eum suscipit autem
-vero enim dolore exerci, ut. Esse ex, magna in facilisis duis amet
-feugait augue accumsan zzril. Lobortis aliquip dignissim at, in molestie
-nibh, vulputate feugait nibh luptatum ea delenit nostrud dolore minim
-veniam odio. Euismod delenit nulla accumsan eum vero ullamcorper eum ad
-velit veniam. Quis, exerci ea feugiat nulla molestie, veniam nonummy
-nulla. Elit tincidunt, consectetuer dolore nulla ipsum commodo, ut, at
-qui blandit suscipit accumsan feugiat vel praesent.
-
-Dolor zzril wisi quis consequat in autem praesent dignissim, sit vel
-aliquam at te, vero. Duis molestie consequat eros tation facilisi diam
-dolor augue. Dolore dolor in facilisis et facilisi et adipiscing
-suscipit eu iusto praesent enim, euismod consectetuer feugait duis
-vulputate.
-
-#strong[Acknowledgements]
-
-I would like to thank all the little people who made this thesis
-possible.
-
-#strong[Dedication]
-
-This is dedicated to the one I love.
+//
+#GLOSSARIES
 
 = Introduction
 #label("introduction")
