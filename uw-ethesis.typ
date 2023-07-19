@@ -87,13 +87,13 @@
 
 In the beginning, there was $pi$:
 
-$ e^(pi i) plus 1 eq 0 $ <eqn_pi> A computer could compute $pi$ all day long. In
+$ e^(pi i) plus 1 eq 0 $ <eqn_pi> A #gls("computer") could compute $pi$ all day long. In
 fact, subsets of digits of $pi$’s decimal approximation would make a
-good source for psuedo-random vectors, #gls("rvec").
+good source for psuedo-random vectors, #gls("rvec")#cite("goossens.book").
 
 == State of the Art
 #label("state-of-the-art")
-See equation @eqn_pi on page.#footnote[A famous equation.]
+See equation @eqn_pi in @state-of-the-art.#footnote[A famous equation.]
 
 == Some Meaningless Stuff
 #label("some-meaningless-stuff")
@@ -204,7 +204,7 @@ LaTeX, is worth a look too, and the many available add-on packages are
 described by Goossens #emph[et al] #cite("goossens.book").
 
 #pagebreak(weak: true)
-#bibliography("uw-ethesis.bib")
+#bibliography("uw-ethesis.bib", title: [References])
 
 // #set heading(numbering: "A.1.1.1")
 // #counter(heading).update(0)

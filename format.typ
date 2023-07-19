@@ -162,7 +162,7 @@
 ) = {
   set page(
     paper: "us-letter", 
-    margin: (rest: 1.0625in, inside: 1.125in, bottom:1.125in+0.4in, top: 1.125in + 0.4in),
+    margin: (outside: 1.0in, inside: 1.125in, bottom:1.125in+0.4in, top: 1.125in + 0.4in),
     header-ascent: 0.4in,
     footer-descent: 0.3in
   )
@@ -185,8 +185,36 @@
 
   // show heading.where(level: 1): set text(size: 24pt)
   show heading.where(level: 2): set text(size: 18pt)
-  show heading.where(level: 2): set text(size: 18pt)
   show heading.where(level: 3): set text(size: 14pt)
+
+  show outline.entry.where(level: 1): it => {
+    v(16pt, weak: true)
+    strong(it)
+  }
+  show outline.entry.where(level: 2): it => {
+    it
+  }
+  show link: set text(fill: blue)
+  show ref: it => {
+    let eq = math.equation
+    let hd = heading
+    let el = it.element
+    if el != none and el.func() == eq {
+      // Override equation references.
+      link(el.label)[#numbering(
+        el.numbering,
+        ..counter(eq).at(el.location())
+      )]
+    } else if el != none and el.func() == hd {
+      // Override equation references.
+      text(fill: blue.darken(60%))[#it]
+    } else {
+      // Other references as usual.
+      it
+    }
+  }
+  show cite: set text(fill: green)
+
 
   // Title page.
   v(0.25fr)
@@ -318,23 +346,24 @@
 
 
   // Table of contents.
+  heading("Table of Contents", numbering: none, outlined: false)
   outline(
-    title: "Table of Contents", 
+    title: none,
     depth: 3, indent: true
   )
   pagebreak()
 
-  invisible_heading("List of Figures")
+  heading("List of Figures", numbering: none)
   outline(
-    title: "List of Figures", 
+    title: none, 
     depth: 3, indent: true,
-    target: figure.where(kind: image)
+    target: figure.where(kind: image),
   )
   pagebreak()
 
-  invisible_heading("List of Tables")
+  heading("List of Tables", numbering: none)
   outline(
-    title: "List of Tables", 
+    title: none,
     depth: 3, indent: true,
     target: figure.where(kind: table)
   )
@@ -347,7 +376,7 @@
     numbering: none,
     text("List of Abbreviations"),
   )
-  print_glossary(glossaries, "abbreviation", bold: false)
+  print_glossary(glossaries, "abbreviation", bold: true)
   pagebreak()
 
   heading(
@@ -355,7 +384,7 @@
     numbering: none,
     text("List of Symbols"),
   )
-  print_glossary(glossaries, "symbol")
+  print_glossary(glossaries, "symbol", bold: false)
 
   // Main body.
   set page(numbering: "1", number-align: center)
@@ -376,10 +405,31 @@
         ]
         #par(first-line-indent: 0pt)[#it.body]
       ]
-      #v(1.5cm)
+      #v(1.5cm, weak: true)
   ]
+  show heading.where(level: 2): it => [
+      #set text(size: 18pt)
+      #v(1cm, weak: true)
+      #block[
+        #if it.numbering != none [
+          #counter(heading).display() 
+        ]
+        #it.body
+      ]
+      #v(1cm, weak: true)
+  ]
+  show heading.where(level: 2): set text(size: 18pt)
+  show heading.where(level: 3): set text(size: 14pt)
 
   body
+
+  pagebreak(weak: true)
+  heading(
+    outlined: true,
+    numbering: none,
+    text("Glossary"),
+  )
+  print_glossary(glossaries, "glossary")
 }
 
 #let appendix(body) = {
