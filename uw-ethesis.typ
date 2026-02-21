@@ -102,132 +102,58 @@
 = Introduction
 #label("introduction")
 
-In the beginning, there was $pi$:
 
-$ e^(pi i) plus 1 eq 0 $ <eqn_pi> A #gls("computer") could compute $pi$ all day long. In
-fact, subsets of digits of $pi$’s decimal approximation would make a
-good source for psuedo-random vectors, #gls("rvec") @goossens.book.
+In the beginning God created the heaven and the earth.
 
-== State of the Art
+
+
+== Nowadays
 #label("state-of-the-art")
-See equation @eqn_pi_2 in @state-of-the-art.#footnote[A famous equation.]
 
-$ e^(pi i) plus 1 eq 0 $ <eqn_pi_2> 
+A #gls("computer") can be used to simulate sampling a random vector #gls("rvec") @goossens.book.
+If #gls("rvec") is a Gaussian random vector, then Its marginal distribution can be calculated as 
+$
+p(v_i) = 1 / sqrt(2 pi sigma_i^2) exp(- (v_i - mu_i)^2 / (2 sigma_i^2)).
+$<equ-gaussian>
+
 
 == Some Meaningless Stuff
 #label("some-meaningless-stuff")
 
-The credo of the #gls("aaaaz") was, for several years, several paragraphs of
-gibberish, until the dingledorf responsible for the #gls("aaaaz") Web site
-realized his mistake:
+Thanks to #gls("aaaaz"), we are able to use #gls("computer", shown_as: "computers") to simulate sampling #gls("rvec", shown_as: "random vectors") @goossens.book.
 
-"Velit dolor illum facilisis zzril ipsum, augue odio, accumsan ea augue
-molestie lobortis zzril laoreet ex ad, adipiscing nulla. Veniam dolore,
-vel te in dolor te, feugait dolore ex vel erat duis nostrud diam commodo
-ad eu in consequat esse in ut wisi. Consectetuer dolore feugiat wisi eum
-dignissim tincidunt vel, nostrud, at vulputate eum euismod, diam minim
-eros consequat lorem aliquam et ad. Feugait illum sit suscipit ut,
-tation in dolore euismod et iusto nulla amet wisi odio quis nisl feugiat
-adipiscing luptatum minim nisl, quis, erat, dolore. Elit quis sit dolor
-veniam blandit ullamcorper ex, vero nonummy, duis exerci delenit
-ullamcorper at feugiat ullamcorper, ullamcorper elit vulputate iusto
-esse luptatum duis autem. Nulla nulla qui, te praesent et at nisl ut in
-consequat blandit vel augue ut.
-
-Illum suscipit delenit commodo augue exerci magna veniam hendrerit
-dignissim duis ut feugait amet dolor dolor suscipit iriure veniam. Vel
-quis enim vulputate nulla facilisis volutpat vel in, suscipit facilisis
-dolore ut veniam, duis facilisi wisi nulla aliquip vero praesent nibh
-molestie consectetuer nulla. Wisi nibh exerci hendrerit consequat,
-nostrud lobortis ut praesent dignissim tincidunt enim eum accumsan.
-Lorem, nonummy duis iriure autem feugait praesent, duis, accumsan tation
-enim facilisi qui te dolore magna velit, iusto esse eu, zzril. Feugiat
-enim zzril, te vel illum, lobortis ut tation, elit luptatum ipsum,
-aliquam dolor sed. Ex consectetuer aliquip in, tation delenit dignissim
-accumsan consequat, vero, et ad eu velit ut duis ea ea odio.
-
-Vero qui, te praesent et at nisl ut in consequat blandit vel augue ut
-dolor illum facilisis zzril ipsum. Exerci odio, accumsan ea augue
-molestie lobortis zzril laoreet ex ad, adipiscing nulla, et dolore, vel
-te in dolor te, feugait dolore ex vel erat duis. Ut diam commodo ad eu
-in consequat esse in ut wisi aliquip dolore feugiat wisi eum dignissim
-tincidunt vel, nostrud. Ut vulputate eum euismod, diam minim eros
-consequat lorem aliquam et ad luptatum illum sit suscipit ut, tation in
-dolore euismod et iusto nulla. Iusto wisi odio quis nisl feugiat
-adipiscing luptatum minim. Illum, quis, erat, dolore qui quis sit dolor
-veniam blandit ullamcorper ex, vero nonummy, duis exerci delenit
-ullamcorper at feugiat. Et, ullamcorper elit vulputate iusto esse
-luptatum duis autem esse nulla qui.
-
-Praesent dolore et, delenit, laoreet dolore sed eros hendrerit consequat
-lobortis. Dolor nulla suscipit delenit commodo augue exerci magna veniam
-hendrerit dignissim duis ut feugait amet. Ad dolor suscipit iriure
-veniam blandit quis enim vulputate nulla facilisis volutpat vel in. Erat
-facilisis dolore ut veniam, duis facilisi wisi nulla aliquip vero
-praesent nibh molestie consectetuer nulla, iriure nibh exerci hendrerit.
-Vel, nostrud lobortis ut praesent dignissim tincidunt enim eum accumsan
-ea, nonummy duis. Ad autem feugait praesent, duis, accumsan tation enim
-facilisi qui te dolore magna velit, iusto esse eu, zzril vel enim zzril,
-te. Nisl illum, lobortis ut tation, elit luptatum ipsum, aliquam dolor
-sed minim consectetuer aliquip.
-
-Tation exerci delenit ullamcorper at feugiat ullamcorper, ullamcorper
-elit vulputate iusto esse luptatum duis autem esse nulla qui. Volutpat
-praesent et at nisl ut in consequat blandit vel augue ut dolor illum
-facilisis zzril ipsum, augue odio, accumsan ea augue molestie lobortis
-zzril laoreet. Ex duis, te velit illum odio, nisl qui consequat aliquip
-qui blandit hendrerit. Ea dolor nonummy ullamcorper nulla lorem tation
-laoreet in ea, ullamcorper vel consequat zzril delenit quis dignissim,
-vulputate tincidunt ut.\"
+#lorem(300)
 
 #pagebreak(weak: true)
 = Observations
 #label("observations")
-This would be a good place for some figures and tables.
 
-Some notes on figures and photographs…
+#figure(
+  box(
+    width: 3in,
+    height: 2in,
+    stroke: black,
+  )[Let's say this is a figure.],
+  caption: [
+    This is a figure caption.  You can put any content here, including math formulae, lists, and so on.  The figure will be automatically numbered and indexed into the list of figures.
+  ],
+  alt: "It's a good practice to provide an alternative text description for your figures"
+)<fig-1>
 
--  A well-prepared PDF should be
 
-  +  Of reasonable size, #emph[i.e.] photos cropped and compressed.
+You can put figures here.  Use the `@` symbol to refer to them, for example: @fig-1.
 
-  +  Scalable, to allow enlargment of text and drawings.
 
--  Photos must be bit maps, and so are not scaleable by definition. TIFF
-  and BMP are uncompressed formats, while JPEG is compressed. Most
-  photos can be compressed without losing their illustrative value.
-
--  Drawings that you make should be scalable vector graphics, #emph[not]
-  bit maps. Some scalable vector file formats are: EPS, SVG, 
-  #strike[PNG,]#footnote[I don't know why IST puts "PNG" in this list.]
-  WMF.
-  #strike[These can all be converted into PNG or PDF, that pdflatex recognizes.]
-  Do not convert your scalable vector graphics into PNG, because that
-  will make them unscaleable bit maps.  Typst supports PDF and SVG only.
-  Consider converting other formats to PDF (or SVG). 
-  Your drawing package can probably export to one of these formats
-  directly. Otherwise, a common procedure is to print-to-file through a
-  Postscript printer driver to create a PDF file. 
-  Programs such as GSView (a Ghostscript
-  GUI) can create both EPS and PDF from PS files.
-  Appendix #link("#AppendixA")[3] shows how to generate properly sized
-  Matlab plots and save them as PDF.
-
+- JPEG with reasonable resolution and compresison is suggested for photos.
+- Your drawings should ideally be output in SVG (or PDF).  
+  EPS is also a good format, as it supports scalable vector graphics.  You may convert it to PDF if you want to include it in a Typst file. Only use PNG when your drawing software does not support SVG or PDF.
+  See UW's LaTeX thesis template for information about using MATLAB to generate plots as PDFs. 
 - Sometimes, the #link("https://cetz-package.github.io/")[CeTZ package]
   in Typst is a good candidate for making simple figures.
-
--  It’s important to crop your photos and draw your figures to the size
-  that you want to appear in your thesis. Scaling photos with the
-  includegraphics command will cause loss of resolution. And scaling
-  down drawings may cause any text annotations to become too small.
 
 For more information on LaTeX  see 
 #link("uwaterloo.atlassian.net/wiki/spaces/ISTSERV/pages/42589978807/LaTeX+for+E-Thesis+and+large+documents")[these
 notes]. #super[2]
-
-The classic book by Leslie Lamport @lamport.book, author of
-LaTeX, is worth a look too, and the many available add-on packages are
-described by Goossens #emph[et al] @goossens.book.
 
 #pagebreak(weak: true)
 #bibliography("uw-ethesis.bib", title: [References])
@@ -242,42 +168,6 @@ described by Goossens #emph[et al] @goossens.book.
 
 
 #pagebreak(weak: true)
-= Matlab Code for Making a PDF Plot
-#label("AppendixA")
-
-== Using the Graphical User Interface
-#label("using-the-graphical-user-interface")
-Properties of Matab plots can be adjusted from the plot window via a
-graphical interface. Under the Desktop menu in the Figure window, select
-the Property Editor. You may also want to check the Plot Browser and
-Figure Palette for more tools. To adjust properties of the axes, look
-under the Edit menu and select Axes Properties @goossens.book.
-
-To set the figure size and to save as PDF or other file formats, click
-the Export Setup button in the figure Property Editor.
-
-== From the Command Line
-#label("from-the-command-line")
-All figure properties can also be manipulated from the command line.
-Here’s an example:
-
-```
-x=[0:0.1:pi];
-hold on % Plot multiple traces on one figure
-plot(x,sin(x))
-plot(x,cos(x),'--r')
-plot(x,tan(x),'.-g')
-title('Some Trig Functions Over 0 to \pi') % Note LaTeX markup!
-legend('{\it sin}(x)','{\it cos}(x)','{\it tan}(x)')
-hold off
-set(gca,'Ylim',[-3 3]) % Adjust Y limits of "current axes"
-set(gcf,'Units','inches') % Set figure size units of "current figure"
-set(gcf,'Position',[0,0,6,4]) % Set figure width (6 in.) and height (4 in.)
-cd n:\thesis\plots % Select where to save
-print -dpdf plot.pdf % Save as PDF
-```
-
-
 
 = Specific Notes for Accessibility Concerns
 
@@ -303,3 +193,8 @@ print -dpdf plot.pdf % Save as PDF
   ```
 
   However, you need to add alternate text descriptions to all your figures and equations.  By the time I am making this template, Typst has just #link("https://github.com/quarto-dev/quarto-cli/issues/13870")[merged the new syntax for alternate text for equations].  You should be able use it in the next release. 
+
+
+== The HTML format
+
+Cimpilintg Typst to HTML is still experimental.  Currently, the largest issue is also formulae.  You can use #link("https://github.com/a-for-short/html-typst-equation-renderer")[HTML Typst Equation Renderer] to render equations as embeded SVG images in the HTML output.  This is a good solution for mobile phone users and (probably) for people with limited vision, but it is certainly not for screen readers.  We will also need to wait for Typst to support the new syntax for alternate text for equations to make the HTML output more accessible.

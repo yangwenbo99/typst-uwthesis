@@ -1,13 +1,13 @@
 #let abbreviations = (
-  "aaaaz": ("AAAAZ", "American Association of Amateur Astronomers and Zoologists"),
+  "aaaaz": ("AAAAZ", "Association for the Advancement of Absolutely Astonishing Zebras"),
 )
 
 #let symbols = (
-  "rvec": ($bold(v)$, "Random vector: a location in n-dimensional Cartesian space, where each dimensional component is determined by a random process", $bold(v)$),
+  "rvec": ($bold(v)$, "Random vector: a finite sequence of random variables.", $bold(v)$),
 )
 
 #let glossaries = (
-  "computer": ("computer", "A programmable machine that receives input data, stores and manipulates the data, and provides formatted output", "computer")
+  "computer": ("computer", "A machine for computing", "computer")
 )
 
 #let GLOSSARIES = (
