@@ -171,6 +171,7 @@ notes]. #super[2]
 
 = Specific Notes for Accessibility Concerns
 
++ #link("https://quarto.org/docs/blog/posts/2026-03-05-pdf-accessibility-and-standards/index.html")[Typst offers far better support for PDF accessibility standards than LaTeX], but it is still a work in progress.  All generated PDFs have all accessibility features enabled by default. 
 + The PDF format of the thesis must conform to the PDF/A _or_ PDF/UA standards whenever technically feasible, per #link("https://uwaterloo.ca/lib/uwspace/thesis-submission-guide/formatting-your-thesis")[University requirements].  This template can be used to compile PDA/A:
   ```bash
   typst compile --pdf-standard a-4 uw-ethesis.typ
@@ -187,12 +188,13 @@ notes]. #super[2]
 == Compiling to PDF/UA
 <sec-pdf-ua>
 
-  The compilation to PDF/A-Aa or PDF/UA is not straightforward.  First, you need to use the `pdf_ua` option in the project block to disable certain formatting features that interfere with Typst's compilation to PDF/UA.
-  ```bash
-  typst compile --pdf-standard ua-1 uw-ethesis.typ
-  ```
+The compilation to PDF/A-Aa or PDF/UA is not straightforward.  First, you need to use the `pdf_ua` option in the project block to disable certain formatting features that interfere with Typst's compilation to PDF/UA.
+```bash
+typst compile --pdf-standard ua-1 uw-ethesis.typ
+```
 
-  However, you need to add alternate text descriptions to all your figures and equations.  By the time I am making this template, Typst has just #link("https://github.com/quarto-dev/quarto-cli/issues/13870")[merged the new syntax for alternate text for equations].  You should be able use it in the next release. 
+However, you need to add alternate text descriptions to all your figures and equations.  
+Typst will "automatically make math accessible in HTML and PDF 2.0 by leveraging MathML technology" in the future, but currently, you need to use the `alt` option manually.
 
 
 == The HTML format
