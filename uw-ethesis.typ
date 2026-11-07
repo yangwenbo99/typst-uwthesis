@@ -1,6 +1,9 @@
 #import "format.typ": project, appendix, gls
 #import "glossaries.typ": GLOSSARIES
 
+// Set the default to "false", or compile with --input backrefs=false, to disable.
+#let backrefs-enabled = sys.inputs.at("backrefs", default: "true") == "true"
+
 #show: project.with(
   title: "University of Waterloo E-Thesis Template for Typst",
   doc_type: "thesis",
@@ -93,8 +96,17 @@
   * to PDF/UA.
   */
   pdf_ua: false,
-  html: false,
+  html: sys.inputs.at("html", default: "false") == "true",
 )
+
+#show: doc => if backrefs-enabled {
+  import "@preview/retrofit:0.2.0": backrefs
+  backrefs(
+    format: links => if links.len() > 1 [Cited on pages #links.join(", ").],
+    read: path => read(path),
+    doc,
+  )
+} else { doc }
 
 // #committee
 //
@@ -169,7 +181,13 @@ This template follows the same overall thesis structure as #link("https://www.ov
 The #link("https://uwaterloo.ca/current-graduate-students/academics/thesis-and-defence/thesis-formatting")[current UW guidelines] require readable, consistent typography but do not prescribe these fonts, spacing values, or equation-numbering schemes.  Both templates use coloured links and centre page numbers within the text area.  See the accessibility appendix (@sec-accessibility) for PDF/A and PDF/UA compilation instructions.
 
 #pagebreak(weak: true)
-#bibliography("uw-ethesis.bib", title: [References])
+#if backrefs-enabled {
+  // Keep heading blocks outside retrofit's bibliography-entry counting rules.
+  heading("References", numbering: none)
+  bibliography("uw-ethesis.bib", title: none)
+} else {
+  bibliography("uw-ethesis.bib", title: [References])
+}
 
 // #set heading(numbering: "A.1.1.1")
 // #counter(heading).update(0)
@@ -185,6 +203,7 @@ The #link("https://uwaterloo.ca/current-graduate-students/academics/thesis-and-d
 = Specific Notes for Accessibility Concerns
 <sec-accessibility>
 
+
 + #link("https://quarto.org/docs/blog/posts/2026-03-05-pdf-accessibility-and-standards/index.html")[Typst offers far better support for PDF accessibility standards than LaTeX], but it is still a work in progress.  All generated PDFs have all accessibility features enabled by default. 
 + The PDF format of the thesis must conform to the PDF/A _or_ PDF/UA standards whenever technically feasible, per #link("https://uwaterloo.ca/lib/uwspace/thesis-submission-guide/formatting-your-thesis")[University requirements].  This template can be used to compile PDF/A:
   ```bash
@@ -192,10 +211,11 @@ The #link("https://uwaterloo.ca/current-graduate-students/academics/thesis-and-d
   typst compile --pdf-standard a-3b uw-ethesis.typ
   ```
   There are multiple levels of PDF/A; level A for PDF/A-1 through PDF/A-3 is the strictest one, and it is (probably) the best for disabled users.  However, compilation to these levels is not straightforward.  See @sec-pdf-ua for discussion.
-+ The PDF format is a sh\*tpile format for _printing_ (not for reading on screen) from 1993.  In my personal opinion, from an accessibility standpoint, the most reasonable solution is to compile to HTML.  First, toggle on the `html` feature in the project block.
++ The PDF format is a sh\*tpile format for _printing_ (not for reading on screen) from 1993.  In my personal opinion, from an accessibility standpoint, the most reasonable solution is to compile to HTML.  Enable the template's HTML option with `--input html=true`.
   ```bash
-  typst compile --features=html --format=html uw-ethesis.typ
+  typst compile --features=html --format=html --input html=true --input backrefs=false uw-ethesis.typ
   ```
+  Page-level bibliography backlinks are enabled by default.  However, it needs to be disabled for PDF/UA or HTML.  Disable them with `--input backrefs=false`. 
 + Additionally, consider reading #link("https://typst.app/docs/guides/accessibility/")[Typst's accessibility guide] for tips on making your thesis more accessible to readers with disabilities, readers using non-orthodox devices, and artificial intelligence.
 
 
@@ -204,7 +224,7 @@ The #link("https://uwaterloo.ca/current-graduate-students/academics/thesis-and-d
 
 Compilation to PDF/A conformance level A or PDF/UA is not straightforward.  First, you need to use the `pdf_ua` option in the project block to disable certain formatting features that interfere with Typst's compilation to PDF/UA.
 ```bash
-typst compile --pdf-standard ua-1 uw-ethesis.typ
+typst compile --pdf-standard ua-1 --input backrefs=false uw-ethesis.typ
 ```
 
 However, you need to add alternate text descriptions to all your figures and equations.  

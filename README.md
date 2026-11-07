@@ -18,7 +18,7 @@ See @eq-energy.
 
 ## Limitations
 
-1. Limited reverse link from bibliography (only the first reference can be linked back from bibliography).  This needs to be addressed by Typst.
+1. `uw-ethesis.typ` enables page-level bibliography backlinks using `retrofit:0.2.0`, hiding the suffix for entries cited on only one page; disable this feature with `--input backrefs=false` for PDF/UA or HTML exports, which the package currently does not support.
 2. No reverse link from list of abbreviations.  Should not be _very_ hard to implement, but this does not seem to be a high priority thing.
 
 ## Integration example
