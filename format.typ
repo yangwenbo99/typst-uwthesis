@@ -272,7 +272,7 @@
 
 #let print_glossary(glossaries, name, bold: true, html: false) = {
   let to_print = ()
-  for (key, value) in glossaries.at(name).pairs() {
+  for (key, value) in glossaries.at(name, default: (:)).pairs() {
     // let (abbr, full) = value
     let abbr = value.at(0)
     let full = value.at(1)
@@ -373,7 +373,8 @@
   statement: none,
   acknowledgements: "", 
   dedication: none, 
-  glossaries: (abbreviation: (:),),
+  // Omit categories or use empty dictionaries to suppress their sections.
+  glossaries: (:),
   indent: 1cm,
   pdf_ua: false,
   html: false,
@@ -619,15 +620,17 @@
 
   GLOSSARIES.update(glossaries)
 
-  heading(
-    outlined: true,
-    numbering: none,
-    text("List of Abbreviations"),
-  )
-  print_glossary(glossaries, "abbreviation", bold: true, html: html)
-  pagebreak()
+  if glossaries.at("abbreviation", default: (:)).len() > 0 {
+    heading(
+      outlined: true,
+      numbering: none,
+      text("List of Abbreviations"),
+    )
+    print_glossary(glossaries, "abbreviation", bold: true, html: html)
+    pagebreak()
+  }
 
-  if glossaries.at("symbol").len() > 0 {
+  if glossaries.at("symbol", default: (:)).len() > 0 {
     heading(
       outlined: true,
       numbering: none,
@@ -674,13 +677,15 @@
 
   body
 
-  pagebreak(weak: true)
-  heading(
-    outlined: true,
-    numbering: none,
-    text("Glossary"),
-  )
-  print_glossary(glossaries, "glossary", html: html)
+  if glossaries.at("glossary", default: (:)).len() > 0 {
+    pagebreak(weak: true)
+    heading(
+      outlined: true,
+      numbering: none,
+      text("Glossary"),
+    )
+    print_glossary(glossaries, "glossary", html: html)
+  }
 }
 
 #let appendix(body) = {
