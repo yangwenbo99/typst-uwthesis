@@ -92,10 +92,10 @@
 }
 
 #let getHeader() = {
-  /* The header is of thew following format:
+  /* The header is of the following format:
   * Chapter Name, Section Name
   *
-  * If a new sections starts in this page, the chapter name and section name
+  * If a new section starts on this page, the chapter name and section name
   * will correspond to the new section.  
   * If a new chapter starts in this page without a new section, only the chapter name will be shown.
   * Otherwise, the chapter name and section name will correspond to the last chapter and section that appear in the previous pages.
@@ -433,13 +433,13 @@
       )]
     } else if el != none and el.func() == hd {
       // Override equation references.
-      text(fill: blue.darken(60%))[#it]
+      text(fill: rgb("#3247db"))[#it]
     } else {
       // Other references as usual.
       it
     }
   }
-  show cite: set text(fill: green)
+  show cite: set text(fill: rgb("#068700"))
 
 
   // Title page.
@@ -489,27 +489,27 @@
 
   // committee
   if committee_members != none {
-    let commitee_body = ()
+    let committee_body = ()
     for mitem in committee_members {
       let pos_printed = false
       for person in mitem.persons {
         if pos_printed {
-          commitee_body.push("")
+          committee_body.push("")
         } else {
-          commitee_body.push(mitem.position + ": ")
+          committee_body.push(mitem.position + ": ")
         }
         pos_printed = true
-        commitee_body.push([
+        committee_body.push([
           #person.name \
           #person.title, #person.department, #person.affiliation
         ])
       }
-      commitee_body.push(v(1.5cm))
-      commitee_body.push(v(1.5cm))
+      committee_body.push(v(1.5cm))
+      committee_body.push(v(1.5cm))
     }
 
     small_title(outlined: false)[Examining Committee Membership]
-    invisible_heading([Examining Committee])
+    invisible_heading([Examining Committee Membership])
 
     [
       The following served on the Examining Committee for this thesis. The decision of the
@@ -520,13 +520,13 @@
       grid(
         columns: 2,
         gutter: 3mm,
-        ..commitee_body
+        ..committee_body
       )
     } else {
       grid(
         columns: 2,
         gutter: 3mm,
-        ..commitee_body
+        ..committee_body
       )
     }
 
@@ -644,13 +644,14 @@
   
   // set gls(glossaries: glossaries)
 
+  show heading.where(level: 1): set heading(supplement: [Chapter])
   show heading.where(level: 1): it => [
       // #pagebreak(weak: true)
       #set text(size: 24pt)
       #v(1.5in)
       #block[
         #if it.numbering != none [
-          Chapter #counter(heading).display() 
+          #it.supplement #counter(heading).display()
           #v(0.5cm)
         ]
         #par(first-line-indent: 0pt)[#it.body]
@@ -684,7 +685,7 @@
 
 #let appendix(body) = {
   set heading(numbering: "A.1.1.1")
+  show heading.where(level: 1): set heading(supplement: [Appendix])
   counter(heading).update(0)
   body
 }
-

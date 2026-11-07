@@ -163,9 +163,9 @@ This template follows the same overall thesis structure as #link("https://www.ov
 - *Equation numbering:* Equations are numbered continuously as (1), (2), and so on, including in appendices.  The LaTeX template numbers them by chapter, such as (1.1), (2.1), and (A.1), resetting the equation counter in each chapter.
 - *Fonts and sizes:* Body text and mathematics use New Computer Modern rather than LaTeX's traditional Computer Modern fonts.  Both use nominally 12-point body text, but heading sizes and font metrics differ.  Code uses DejaVu Sans Mono rather than Computer Modern Typewriter.
 - *Spacing:* Ordinary body lines in the inspected Typst 0.15.1 output are approximately 16.00 PDF points apart, compared with 14.45 in the official PDF: about 11% more spacing.  Paragraph separation is also larger; mathematics and other tall content can alter these distances.
-- *Chapters and appendices:* Unlike LaTeX's chapter command, this template currently requires explicit page breaks before new chapters, as demonstrated here.  Appendix mode changes chapter numbers to letters but retains the displayed prefix "Chapter" rather than "Appendix."
+- *Chapter breaks:* Unlike LaTeX's chapter command, this template currently requires explicit page breaks before new chapters, as demonstrated here.  Appendices use lettered numbering and the prefix "Appendix," as in the LaTeX template.
 
-The #link("https://uwaterloo.ca/current-graduate-students/academics/thesis-and-defence/thesis-formatting")[current UW guidelines] require readable, consistent typography but do not prescribe these fonts, spacing values, or equation-numbering schemes.  Both templates use coloured links and centre page numbers within the text area.  See the accessibility appendix for PDF/A and PDF/UA compilation instructions.
+The #link("https://uwaterloo.ca/current-graduate-students/academics/thesis-and-defence/thesis-formatting")[current UW guidelines] require readable, consistent typography but do not prescribe these fonts, spacing values, or equation-numbering schemes.  Both templates use coloured links and centre page numbers within the text area.  See the accessibility appendix (@sec-accessibility) for PDF/A and PDF/UA compilation instructions.
 
 #pagebreak(weak: true)
 #bibliography("uw-ethesis.bib", title: [References])
@@ -182,6 +182,7 @@ The #link("https://uwaterloo.ca/current-graduate-students/academics/thesis-and-d
 #pagebreak(weak: true)
 
 = Specific Notes for Accessibility Concerns
+<sec-accessibility>
 
 + #link("https://quarto.org/docs/blog/posts/2026-03-05-pdf-accessibility-and-standards/index.html")[Typst offers far better support for PDF accessibility standards than LaTeX], but it is still a work in progress.  All generated PDFs have all accessibility features enabled by default. 
 + The PDF format of the thesis must conform to the PDF/A _or_ PDF/UA standards whenever technically feasible, per #link("https://uwaterloo.ca/lib/uwspace/thesis-submission-guide/formatting-your-thesis")[University requirements].  This template can be used to compile PDF/A:
