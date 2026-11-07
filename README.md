@@ -5,11 +5,25 @@ I wrote this template for my thesis proposal.
 
 At this moment, `project`, `appendix` and `gls` are only documented using the code itself.
 
+## Equation numbering
+
+Use Typst 0.15.1 or later. Main-body equations are numbered by chapter, such as `(1.1)` and `(2.1)`. The equation counter resets at each numbered chapter, but not at subsections or unnumbered headings. Appendices use `(A.1)`, `(B.1)`, and so on; front-matter equations retain simple numbering.
+
+Label equations normally and reference them with `@eq-energy`; references display the same parenthesised number and link to the equation, including across chapters and appendices. Use `#ref(<eq-energy>, form: "page")` for its page number.
+
+```typst
+$ E = m c^2 $ <eq-energy>
+See @eq-energy.
+```
+
 ## Limitations
 
-1. Equations are not labeled in `chapter.equ` format.  Currently, only some imperfect workarounds are available.  After carefully reading UW's guidelines, I believe this is not a violation.
-2. Limited reverse link from bibliography (only the first reference can be linked back from bibliography).  This needs to be addressed by Typst.
-3. No reverse link from list of abbreviations.  Should not be _very_ hard to implement, but this does not seem to be a high priority thing.
+1. Limited reverse link from bibliography (only the first reference can be linked back from bibliography).  This needs to be addressed by Typst.
+2. No reverse link from list of abbreviations.  Should not be _very_ hard to implement, but this does not seem to be a high priority thing.
+
+## Integration example
+
+See [tests/README.md](tests/README.md) for a multi-chapter demonstration and automated checks covering equations, references, front matter, glossaries, and export formats. Generated PDFs are placed in `tmp/` for visual inspection.
 
 ## Licence
 

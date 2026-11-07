@@ -343,6 +343,10 @@
 }
 
 
+#let equation_number(pattern, n) = {
+  numbering(pattern, counter(heading).get().first(), n)
+}
+
 #let project(
   title: "",
   doc_type: "thesis", 
@@ -398,9 +402,7 @@
     lang: "en"
   )
   show math.equation: set text(weight: 400)
-  // set math.equation(numbering: "(1.1)") // Currently not directly supported by typst
-  // After careful inspection of the specification, I found no violation of 
-  // UW's policy for simply using equations in (1) format.
+  // Front-matter equations use a simple sequence.
   set math.equation(numbering: "(1)")
   set heading(numbering: "1.1")
   set par(justify: true)
@@ -426,12 +428,9 @@
     let eq = math.equation
     let hd = heading
     let el = it.element
-    if el != none and el.func() == eq {
-      // Override equation references.
-      link(el.label)[#numbering(
-        el.numbering,
-        ..counter(eq).at(el.location())
-      )]
+    if it.form == "normal" and el != none and el.func() == eq {
+      // Evaluate the numbering in the target equation's chapter, not here.
+      link(el.location(), counter(eq).display(el.numbering, at: el.location()))
     } else if el != none and el.func() == hd {
       // Override equation references.
       text(fill: rgb("#3247db"))[#it]
@@ -640,6 +639,7 @@
   }
 
   // Main body.
+  set math.equation(numbering: equation_number.with("(1.1)"))
   set page(numbering: "1", number-align: center)
   set par(first-line-indent: 20pt)
   set page(header: getHeader())
@@ -649,6 +649,9 @@
 
   show heading.where(level: 1): set heading(supplement: [Chapter])
   show heading.where(level: 1): it => [
+      #if it.numbering != none {
+        counter(math.equation).update(0)
+      }
       // #pagebreak(weak: true)
       #set text(size: 24pt)
       #v(1.5in)
@@ -690,6 +693,7 @@
 
 #let appendix(body) = {
   set heading(numbering: "A.1.1.1")
+  set math.equation(numbering: equation_number.with("(A.1)"))
   show heading.where(level: 1): set heading(supplement: [Appendix])
   counter(heading).update(0)
   body

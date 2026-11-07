@@ -115,6 +115,7 @@ $
 p(v_i) = 1 / sqrt(2 pi sigma_i^2) exp(- (v_i - mu_i)^2 / (2 sigma_i^2)).
 $<equ-gaussian>
 
+Equation @equ-gaussian illustrates the numbering and reference format.
 
 == Some Meaningless Stuff
 #label("some-meaningless-stuff")
@@ -160,7 +161,7 @@ notes]. #super[2]
 
 This template follows the same overall thesis structure as #link("https://www.overleaf.com/latex/templates/university-of-waterloo-thesis-template-v03-dot-2026/qxqqzmbrcmpp")[UW's official LaTeX template (March 2026)], but does not reproduce its formatting exactly.
 
-- *Equation numbering:* Equations are numbered continuously as (1), (2), and so on, including in appendices.  The LaTeX template numbers them by chapter, such as (1.1), (2.1), and (A.1), resetting the equation counter in each chapter.
+- *Equation numbering:* Like the LaTeX template, this template numbers equations by chapter, such as (1.1), (2.1), and (A.1), resetting the equation counter in each numbered chapter or appendix.  References such as @equ-gaussian use the equation's own chapter number, even when cited from another chapter.
 - *Fonts and sizes:* Body text and mathematics use New Computer Modern rather than LaTeX's traditional Computer Modern fonts.  Both use nominally 12-point body text, but heading sizes and font metrics differ.  Code uses DejaVu Sans Mono rather than Computer Modern Typewriter.
 - *Spacing:* Ordinary body lines in the inspected Typst 0.15.1 output are approximately 16.00 PDF points apart, compared with 14.45 in the official PDF: about 11% more spacing.  Paragraph separation is also larger; mathematics and other tall content can alter these distances.
 - *Chapter breaks:* Unlike LaTeX's chapter command, this template currently requires explicit page breaks before new chapters, as demonstrated here.  Appendices use lettered numbering and the prefix "Appendix," as in the LaTeX template.
